@@ -7,13 +7,28 @@ import {Link} from "react-router-dom";
 
 import {auth, provider} from "../firebase";
 
+import {useDispatch, useSelector} from "react-redux";
+import {selectUserName, setUserLoginDetails, setSignOutState} from "../features/user/userSlice";
+
 const Header = () => {
+    const dispatch = useDispatch()
+    const userName = useSelector(selectUserName)
+
     const handleAuth = () => {
-        auth.signInWithPopup(provider).then((result) => {
-            console.log(result)
-        }).catch((error) => {
-            alert(error.message);
-        });
+        console.log('DEBUG >>> auth being handled')
+        if (!userName) {
+            auth.signInWithPopup(provider).then((result) => {
+                dispatch(setUserLoginDetails({
+                    name: result.user.displayName,
+                    email: result.user.email
+                }))
+            }).catch((error) => {
+                alert(error.message);
+            });
+        } else if (userName) {
+            auth.signOut()
+            dispatch(setSignOutState())
+        }
     }
     return (
         <div className='header'>
@@ -36,8 +51,19 @@ const Header = () => {
 
                 <Link to='/login'>
                     <div className='header__option' onClick={handleAuth}>
-                        <span className='header__optionLineOne'>Guest</span>
-                        <span className='header__optionLineTwo'>Sign In</span>
+                        {
+                            userName ? (
+                                <>
+                                    <span className='header__optionLineOne'>Hello {userName}</span>
+                                    <span className='header__optionLineTwo'>Sign Out</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className='header__optionLineOne'>Guest</span>
+                                    <span className='header__optionLineTwo'>Sign In</span>
+                                </>
+                            )
+                        }
                     </div>
                 </Link>
 
