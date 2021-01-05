@@ -1,7 +1,23 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './Home.css'
 
+import db from '../firebase'
+
 const Home = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        db.collection('products').onSnapshot(snapshot => {
+            setProducts(snapshot.docs.map(doc => ({
+                id: doc.id,
+                item: doc.data()
+            })))
+        })
+    }, [])
+
+    useEffect(() => {
+        console.log(products)
+    }, [products])
 
     return (
         <div className='home'>
@@ -14,7 +30,7 @@ const Home = () => {
                 </div>
 
                 <div className='home__main'>
-                    {/*    products go here*/}
+                    
                 </div>
             </div>
         </div>
