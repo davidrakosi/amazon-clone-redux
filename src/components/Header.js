@@ -2,6 +2,7 @@ import React from "react";
 
 import './Header.css'
 import SearchIcon from "@material-ui/icons/Search";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 
 import {Link} from "react-router-dom";
 
@@ -26,8 +27,9 @@ const Header = () => {
                 alert(error.message);
             });
         } else if (userName) {
-            auth.signOut()
-            dispatch(setSignOutState())
+            auth.signOut().then(() => {
+                dispatch(setSignOutState())
+            }).catch((err) => alert(err.message))
         }
     }
     return (
@@ -78,6 +80,14 @@ const Header = () => {
                     <span className="header__optionLineOne">Your</span>
                     <span className="header__optionLineTwo">Prime</span>
                 </div>
+
+                <Link to="/checkout">
+                    <div className="header__optionBasket">
+                        <ShoppingBasketIcon/>
+                        <span
+                            className="header__optionLineTwo header__basketCount">n/a</span> {/*number of items in cart to be added later*/}
+                    </div>
+                </Link>
 
             </div>
         </div>
