@@ -1,0 +1,10 @@
+.home{
+    width: 100%;
+}
+
+.home__banner{
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+
+}
