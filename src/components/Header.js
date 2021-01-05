@@ -3,6 +3,8 @@ import React from "react";
 import './Header.css'
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import {Link} from "react-router-dom";
 
@@ -94,7 +96,54 @@ const Header = () => {
             </div>
 
             <div className='header__belt'>
-                
+                <div className='header__belt--left'>
+                    <div className='header__beltItem'>
+                        <MenuIcon/>
+                        <p>All</p>
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Today's Deals
+                    </div>
+
+                    <div className='header__beltItem'>
+                        {userName ? (
+                            <p>{`${userName}'s`} Amazon</p>
+                        ) : (
+                            <p>Your Amazon</p>
+                        )}
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Customer Service
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Browsing History
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Buy Again
+                        <ArrowDropDownIcon/>
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Gift Cards
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Sell
+                    </div>
+
+                    <div className='header__beltItem'>
+                        Registry
+                    </div>
+                </div>
+
+                <div className='header__belt--right'>
+                    <p>Amazon's response to COVID-19</p>
+                </div>
+
             </div>
 
 
