@@ -99,7 +99,7 @@ const Header = () => {
                 <div className='header__belt--left'>
                     <div className='header__beltItem'>
                         <MenuIcon/>
-                        <p>All</p>
+                        All
                     </div>
 
                     <div className='header__beltItem'>

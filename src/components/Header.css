@@ -73,3 +73,36 @@
     margin-right: 10px;
     color: white;
 }
+
+.header__belt{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 28px;
+    background-color: rgb(37, 47, 61);
+    color: white;
+}
+
+.header__belt--left{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.header__beltItem{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 5px 0 6px 0;
+    padding: 7px 11px 7px 11px;
+}
+
+.header__belt--right{
+    flex: 1;
+    text-align: end;
+}
+
+
+
+
+
