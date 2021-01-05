@@ -1,11 +1,17 @@
-.header {
+.header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__main{
     height: 60px;
     display: flex;
     align-items: center;
     background-color: #131921;
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
 .header__logo {
