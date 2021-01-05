@@ -6,12 +6,12 @@ import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import {auth, provider} from "../firebase";
+import { auth, provider } from "../firebase";
 
-import {useDispatch, useSelector} from "react-redux";
-import {selectUserName, setUserLoginDetails, setSignOutState} from "../features/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -39,7 +39,7 @@ const Header = () => {
             <div className='header__main'>
                 <Link to="/">
                     <img className="header__logo" src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-                         alt='Amazon Logo'/>
+                        alt='Amazon Logo' />
                 </Link>
 
                 <div className='header__option'>
@@ -48,8 +48,8 @@ const Header = () => {
                 </div>
 
                 <div className='header__search'>
-                    <input type='text' className='header__searchInput'/>
-                    <SearchIcon className="header__searchIcon"/>
+                    <input type='text' className='header__searchInput' />
+                    <SearchIcon className="header__searchIcon" />
                 </div>
 
                 <div className='header__nav'>
@@ -63,11 +63,11 @@ const Header = () => {
                                         <span className='header__optionLineTwo'>Sign Out</span>
                                     </>
                                 ) : (
-                                    <>
-                                        <span className='header__optionLineOne'>Guest</span>
-                                        <span className='header__optionLineTwo'>Sign In</span>
-                                    </>
-                                )
+                                        <>
+                                            <span className='header__optionLineOne'>Guest</span>
+                                            <span className='header__optionLineTwo'>Sign In</span>
+                                        </>
+                                    )
                             }
                         </div>
                     </Link>
@@ -86,7 +86,7 @@ const Header = () => {
 
                     <Link to="/checkout">
                         <div className="header__optionBasket">
-                            <ShoppingBasketIcon/>
+                            <ShoppingBasketIcon />
                             <span
                                 className="header__optionLineTwo header__basketCount">n/a</span> {/*number of items in cart to be added later*/}
                         </div>
@@ -98,7 +98,7 @@ const Header = () => {
             <div className='header__belt'>
                 <div className='header__belt--left'>
                     <div className='header__beltItem'>
-                        <MenuIcon/>
+                        <MenuIcon />
                         All
                     </div>
 
@@ -110,8 +110,8 @@ const Header = () => {
                         {userName ? (
                             <p>{`${userName}'s`} Amazon</p>
                         ) : (
-                            <p>Your Amazon</p>
-                        )}
+                                <p>Your Amazon</p>
+                            )}
                     </div>
 
                     <div className='header__beltItem'>
@@ -124,7 +124,7 @@ const Header = () => {
 
                     <div className='header__beltItem'>
                         Buy Again
-                        <ArrowDropDownIcon/>
+                        <ArrowDropDownIcon />
                     </div>
 
                     <div className='header__beltItem'>
