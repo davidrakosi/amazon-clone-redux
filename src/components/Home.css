@@ -1,10 +1,17 @@
-.home{
+.home {
     width: 100%;
 }
 
-.home__banner{
+
+.home__banner {
     height: 600px;
     background-position: center;
     background-size: cover;
+}
 
+.home__row {
+    display: flex;
+    z-index: 1;
+    margin-left: 5px;
+    margin-right: 5px;
 }
