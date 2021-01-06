@@ -1,6 +1,11 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux'
+import { selectUserEmail } from '../features/user/userSlice'
+
 const Cart = () => {
+    const userEmail = useSelector(selectUserEmail)
+
     return (
         <div className='cart'>
             <img
@@ -9,7 +14,12 @@ const Cart = () => {
                 alt="Cart Top Ad"
             />
 
-        </div>
+
+            <h3>Hello, {userEmail}</h3>
+            <h2 className="cart__title">Your shopping Cart</h2>
+
+
+        </div >
     )
 }
 
