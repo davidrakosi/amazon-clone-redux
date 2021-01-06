@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Product.css'
 
 import db from '../firebase'
@@ -9,8 +9,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUserEmail, setUserLoginDetails } from '../features/user/userSlice'
 
 const Product = ({ id, title, price, rating, image }) => {
+    const [inCart, setInCart] = useState(false)
+    const [cartCounter, setCartCounter] = useState(0)
+
     const dispatch = useDispatch()
     const userEmail = useSelector(selectUserEmail)
+
+    useEffect(() => {
+        userEmail && db.collection('carts').doc(userEmail).collection('items').onSnapshot(snapshot => {
+            snapshot.docs.map(doc => {
+                if (doc.id === id) {
+                    setInCart(true)
+                    setCartCounter(doc.data().quantity)
+                }
+            })
+
+        })
+    }, [userEmail])
 
     const forceAuth = () => {
         auth.signInWithPopup(provider).then((result) => {
@@ -22,16 +37,17 @@ const Product = ({ id, title, price, rating, image }) => {
     }
 
     const addToCart = () => {
-        if (userEmail) {
-            db.collection('carts').doc(userEmail).collection('items').doc().set({
-                name: title,
-                price: price,
-                image: image
-            })
-
-        } else {
-            forceAuth()
-        }
+        userEmail ?
+            inCart ?
+                db.collection('carts').doc(userEmail).collection('items').doc(id).update({
+                    quantity: cartCounter + 1
+                }) : db.collection('carts').doc(userEmail).collection('items').doc(id).set({
+                    name: title,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                })
+            : forceAuth()
     }
 
     return (
