@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { resetCart } from '../cart/cartSlice'
 
 const initialState = {
     name: null,
     email: null,
-    itemsInCart: 0
 }
 
 const userSlice = createSlice({
@@ -18,22 +18,14 @@ const userSlice = createSlice({
         setSignOutState: state => {
             state.name = null
             state.email = null
-            state.itemsInCart = 0
-        },
 
-        setCartItemCount: (state, action) => {
-            state.itemsInCart += action.payload
-        },
-
-        cartCounterReset: state => {
-            state.itemsInCart = 0
+            resetCart()
         }
-
     }
 }
 )
 
-export const { setUserLoginDetails, setSignOutState, setCartItemCount, cartCounterReset } = userSlice.actions
+export const { setUserLoginDetails, setSignOutState } = userSlice.actions
 
 export const selectUserName = state => state.user.name
 export const selectUserEmail = state => state.user.email

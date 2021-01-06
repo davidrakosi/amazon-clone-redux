@@ -12,18 +12,29 @@ import { auth, provider } from "../firebase";
 import db from '../firebase'
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserName, selectUserEmail, selectCartItemCounter, setCartItemCount, cartCounterReset, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+import {
+    selectUserName,
+    selectUserEmail,
+    setUserLoginDetails,
+    setSignOutState
+} from "../features/user/userSlice";
+
+import {
+    resetCart,
+    setCartItemCount,
+    selectCartItemsAmount
+} from '../features/cart/cartSlice'
 
 const Header = () => {
     const dispatch = useDispatch()
     const userName = useSelector(selectUserName)
     const userEmail = useSelector(selectUserEmail)
-    const cartItemCount = useSelector(selectCartItemCounter)
+    const cartItemCount = useSelector(selectCartItemsAmount)
 
     useEffect(() => {
         let items = 0
         userName && db.collection('userData').doc(userEmail).collection('cartItems').onSnapshot(snapshot => {
-            dispatch(cartCounterReset())
+            dispatch(resetCart())
 
             snapshot.docs.map(doc => {
                 dispatch(setCartItemCount(doc.data().quantity))
