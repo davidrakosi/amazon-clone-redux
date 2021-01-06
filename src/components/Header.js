@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import './Header.css'
 import SearchIcon from "@material-ui/icons/Search";
@@ -9,13 +9,24 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from "react-router-dom";
 
 import { auth, provider } from "../firebase";
+import db from '../firebase'
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserName, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+import { selectUserName, selectUserEmail, selectCartItemCounter, incrementCartItemCountByAmount, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
 
 const Header = () => {
     const dispatch = useDispatch()
     const userName = useSelector(selectUserName)
+    const userEmail = useSelector(selectUserEmail)
+    const cartItemCount = useSelector(selectCartItemCounter)
+
+    useEffect(() => {
+        userName && db.collection('carts').doc(userEmail).collection('items').onSnapshot(snapshot => {
+            snapshot.docs.map(doc => {
+                dispatch(incrementCartItemCountByAmount(doc.data().quantity))
+            })
+        })
+    }, [userName])
 
     const handleAuth = () => {
         console.log('DEBUG >>> auth being handled')
@@ -88,7 +99,7 @@ const Header = () => {
                         <div className="header__optionBasket">
                             <ShoppingBasketIcon />
                             <span
-                                className="header__optionLineTwo header__basketCount">n/a</span> {/*number of items in cart to be added later*/}
+                                className="header__optionLineTwo header__basketCount">{cartItemCount}</span>
                         </div>
                     </Link>
 
