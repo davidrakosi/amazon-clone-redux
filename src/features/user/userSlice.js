@@ -21,11 +21,11 @@ const userSlice = createSlice({
             state.itemsInCart = 0
         },
 
-        incrementCartItemCountByAmount: (state, action) => {
+        setCartItemCount: (state, action) => {
             state.itemsInCart += action.payload
         },
 
-        emptyCart: state => {
+        cartCounterReset: state => {
             state.itemsInCart = 0
         }
 
@@ -33,7 +33,7 @@ const userSlice = createSlice({
 }
 )
 
-export const { setUserLoginDetails, setSignOutState, incrementCartItemCountByAmount, emptyCart } = userSlice.actions
+export const { setUserLoginDetails, setSignOutState, setCartItemCount, cartCounterReset } = userSlice.actions
 
 export const selectUserName = state => state.user.name
 export const selectUserEmail = state => state.user.email

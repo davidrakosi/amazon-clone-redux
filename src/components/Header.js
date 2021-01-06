@@ -12,7 +12,7 @@ import { auth, provider } from "../firebase";
 import db from '../firebase'
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserName, selectUserEmail, selectCartItemCounter, incrementCartItemCountByAmount, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
+import { selectUserName, selectUserEmail, selectCartItemCounter, setCartItemCount, cartCounterReset, setUserLoginDetails, setSignOutState } from "../features/user/userSlice";
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -21,11 +21,16 @@ const Header = () => {
     const cartItemCount = useSelector(selectCartItemCounter)
 
     useEffect(() => {
-        userName && db.collection('carts').doc(userEmail).collection('items').onSnapshot(snapshot => {
+        let items = 0
+        userName && db.collection('userData').doc(userEmail).collection('cartItems').onSnapshot(snapshot => {
+            dispatch(cartCounterReset())
+
             snapshot.docs.map(doc => {
-                dispatch(incrementCartItemCountByAmount(doc.data().quantity))
+                dispatch(setCartItemCount(doc.data().quantity))
             })
         })
+
+
     }, [userName])
 
     const handleAuth = () => {

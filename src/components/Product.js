@@ -16,7 +16,7 @@ const Product = ({ id, title, price, rating, image }) => {
     const userEmail = useSelector(selectUserEmail)
 
     useEffect(() => {
-        userEmail && db.collection('carts').doc(userEmail).collection('items').onSnapshot(snapshot => {
+        userEmail && db.collection('userData').doc(userEmail).collection('cartItems').onSnapshot(snapshot => {
             snapshot.docs.map(doc => {
                 if (doc.id === id) {
                     setInCart(true)
@@ -39,9 +39,9 @@ const Product = ({ id, title, price, rating, image }) => {
     const addToCart = () => {
         userEmail ?
             inCart ?
-                db.collection('carts').doc(userEmail).collection('items').doc(id).update({
+                db.collection('userData').doc(userEmail).collection('cartItems').doc(id).update({
                     quantity: cartCounter + 1
-                }) : db.collection('carts').doc(userEmail).collection('items').doc(id).set({
+                }) : db.collection('userData').doc(userEmail).collection('cartItems').doc(id).set({
                     name: title,
                     price: price,
                     image: image,
