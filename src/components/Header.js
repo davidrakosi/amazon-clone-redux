@@ -45,6 +45,13 @@ const Header = () => {
             }).catch((err) => alert(err.message))
         }
     }
+    const cartElement =
+        <div className="header__optionBasket">
+            <ShoppingBasketIcon />
+            <span
+                className="header__optionLineTwo header__basketCount">{cartItemCount}</span>
+        </div>
+
     return (
         <div className='header'>
             <div className='header__main'>
@@ -95,13 +102,17 @@ const Header = () => {
                         <span className="header__optionLineTwo">Prime</span>
                     </div>
 
-                    <Link to="/checkout">
-                        <div className="header__optionBasket">
-                            <ShoppingBasketIcon />
-                            <span
-                                className="header__optionLineTwo header__basketCount">{cartItemCount}</span>
-                        </div>
-                    </Link>
+                    {
+                        userName ? (
+                            <Link to='/cart'>
+                                {cartElement}
+                            </Link>
+                        ) : (
+                                <Link to='/'>
+                                    {cartElement}
+                                </Link>
+                            )
+                    }
 
                 </div>
             </div>
