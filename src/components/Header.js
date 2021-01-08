@@ -22,6 +22,7 @@ import {
 import {
     resetCart,
     setCartItemCount,
+    setCartItems,
     selectCartItemsAmount
 } from '../features/cart/cartSlice'
 
@@ -38,10 +39,14 @@ const Header = () => {
 
             snapshot.docs.map(doc => {
                 dispatch(setCartItemCount(doc.data().quantity))
+                dispatch(setCartItems({
+                    image: doc.data().image,
+                    name: doc.data().name,
+                    price: doc.data().price,
+                    quantity: doc.data().quantity
+                }))
             })
         })
-
-
     }, [userName])
 
     const handleAuth = () => {
