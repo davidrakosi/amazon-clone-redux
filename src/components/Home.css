@@ -1,5 +1,11 @@
 .home {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.home__container {
+    max-width: 1920px;
 }
 
 .home__banner {
