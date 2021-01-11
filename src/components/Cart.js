@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
-
-
-import { useDispatch } from 'react-redux'
+import CartRow from './CartRow'
 
 import { useSelector } from 'react-redux'
 import { selectCartItems } from '../features/cart/cartSlice'
 
 const Cart = () => {
     const [totalPrice, setTotalPrice] = useState(0)
-    const dispatch = useDispatch()
-
     const cartItems = useSelector(selectCartItems)
+
+    console.log(cartItems)
 
     useEffect(() => {
         let priceTotal = 0
@@ -26,7 +24,15 @@ const Cart = () => {
     return (
         <div className='cart'>
             <div className="cart__list">
+                <h2>Shopping Cart</h2>
+                <p>Price</p>
+                <hr />
 
+                {
+                    cartItems.map(item => (
+                        <CartRow img={item.image} name={item.name} price={item.price} quantity={item.quantity} />
+                    ))
+                }
             </div>
 
             <div className="cart__total">
