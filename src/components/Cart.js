@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import './Cart.css'
 import CartRow from './CartRow'
 
 import { useSelector } from 'react-redux'
@@ -30,7 +31,7 @@ const Cart = () => {
 
                 {
                     cartItems.map(item => (
-                        <CartRow img={item.image} name={item.name} price={item.price} quantity={item.quantity} />
+                        <CartRow img={item.image} name={item.name} price={item.price} quantity={item.quantity} id={item.id} />
                     ))
                 }
             </div>

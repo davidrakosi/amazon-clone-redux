@@ -43,7 +43,8 @@ const Header = () => {
                     image: doc.data().image,
                     name: doc.data().name,
                     price: doc.data().price,
-                    quantity: doc.data().quantity
+                    quantity: doc.data().quantity,
+                    id: doc.id
                 }))
             })
         })

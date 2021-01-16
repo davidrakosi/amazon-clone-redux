@@ -1,0 +1,50 @@
+.cartRow {
+    width: 100%;
+    height: 200px;
+}
+
+.cartRow__container {
+    display: flex;
+}
+
+.cartRow--left {
+    flex: 1;
+    display: flex;
+}
+
+.cartRow__info>h3 {
+    color: rgb(48, 111, 131);
+}
+
+.cartRow__info>p {
+    color: green;
+}
+
+.cartRow__imageContainer>img {
+    height: 180px;
+}
+
+.cartRow__divider {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    width: 98%;
+    opacity: .8;
+}
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

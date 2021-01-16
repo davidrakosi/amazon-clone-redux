@@ -1,0 +1,25 @@
+.cart{
+    display: flex;
+    width: 100vw;
+
+}
+
+.cart__list{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;background-color: white;
+    margin: 5px;
+    padding: 10px;
+}
+
+.cart__list > hr{
+    width: 98%;
+}
+
+.cart__total{
+    width: 20%;
+    background-color: white;
+    height: 100%;
+    margin: 5px;
+}
