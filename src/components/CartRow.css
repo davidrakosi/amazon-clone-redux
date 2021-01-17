@@ -1,6 +1,7 @@
 .cartRow {
     width: 100%;
     height: 200px;
+    padding: 12px;
 }
 
 .cartRow__container {
@@ -24,6 +25,52 @@
     height: 180px;
 }
 
+.cartRow__itemMgmt {
+    margin-top: 12px;
+    display: flex;
+align-items: center;
+}
+
+.cartRow__itemMgmt>button {
+    background: none;
+    border: none;
+    color: #007185;
+    cursor: pointer;
+}
+
+.cartRow__itemMgmt>*, .cartRow__amountSelect>* {
+    margin-right: 8px;
+}
+
+.cartRow__amountSelect {
+    display: flex;
+}
+
+.cartRow__amountSelect>input {
+    width: 30px;
+    text-align: center;
+}
+
+.cartRow__amountSelect>button {
+    font-size: 13px;
+    line-height: 19px;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    word-spacing: 0px;
+    background-color: #f0c14b;
+    width: 60px;
+    border-top: 1px solid #c59f43;
+    border-right: 1px solid #aa8326;
+    border-bottom: 1px solid #957321;
+    border-left: 1px solid #aa8326;
+    border-radius: 3px;
+}
+
+.cartRow--right {
+    margin-right: 16px;
+}
+
 .cartRow__divider {
     width: 100%;
     display: flex;
@@ -35,6 +82,8 @@ hr {
     width: 98%;
     opacity: .8;
 }
+
+/* remove number input sliders */
 
 /* Chrome, Safari, Edge, Opera */
 

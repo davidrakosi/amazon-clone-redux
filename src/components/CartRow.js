@@ -3,20 +3,14 @@ import './CartRow.css'
 
 import db from '../firebase'
 
-import { useDispatch } from 'react-redux'
-import { setSpecificItemAmount } from '../features/cart/cartSlice'
-
 import { useSelector } from 'react-redux'
 import { selectUserEmail } from '../features/user/userSlice'
-
-
 
 const CartRow = ({ img, name, price, quantity, id }) => {
     const [qty, setQty] = useState(quantity)
 
     console.log('DEBUG >>> ', qty)
 
-    const dispatch = useDispatch()
     const userEmail = useSelector(selectUserEmail)
 
     const handleAmountChange = (e) => {
@@ -36,13 +30,15 @@ const CartRow = ({ img, name, price, quantity, id }) => {
                         <h3>{name}</h3>
                         <p>In Stock</p>
                         <div className="cartRow__itemMgmt">
-                            <button>Delete</button>
-                            <button>Save for Later</button>
                             <div className="cartRow__amountSelect">
                                 <p>Qty:</p>
                                 <input type="number" value={qty} onChange={(e) => { setQty(e.target.value) }} />
                                 <button onClick={handleAmountChange}>Update</button>
                             </div>
+                            <p>|</p>
+                            <button>Delete</button>
+                            <p>|</p>
+                            <button>Save for Later</button>
                         </div>
                     </div>
                 </div>
