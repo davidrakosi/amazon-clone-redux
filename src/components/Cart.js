@@ -38,14 +38,16 @@ const Cart = () => {
             </div>
 
             <div className="cart__total">
-                <h2><span>Subtotal ({cartItems.length} items):</span> ${totalPrice}</h2>
-                <div className="cart__totalGiftWrap">
-                    <input type="checkbox" /> {/* add wrap option */}
-                    <p> This order contains a gift</p>
+                <div className="cart__totalContainer">
+                    <h2>Subtotal ({cartItems.length} items): <span>${totalPrice}</span></h2>
+                    <div className="cart__totalGiftWrap">
+                        <input type="checkbox" /> {/* add wrap option */}
+                        <p> This order contains a gift</p>
+                    </div>
+                    <Link to='/checkout'>
+                        <button>Proceed to checkout</button>
+                    </Link>
                 </div>
-                <Link to='/checkout'>
-                    <button>Proceed to checkout</button>
-                </Link>
             </div>
         </div >
     )

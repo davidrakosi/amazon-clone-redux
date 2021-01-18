@@ -22,12 +22,39 @@
     background-color: white;
     height: 100%;
     margin: 5px;
+    padding: 20px;
 }
 
-.cart__total>h2>span{
-    font-weight: 300;
+
+.cart__totalContainer>h2>span{
+    font-weight: 800;
 }
 
 .cart__totalGiftWrap{
     display: flex;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.cart__totalGiftWrap>input{
+    margin-right: 4px;
+}
+
+.cart__totalContainer button {
+    font-size: 13px;
+    line-height: 19px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    word-spacing: 0px;
+    background-color: #f0c14b;
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #c59f43;
+    border-right: 1px solid #aa8326;
+    border-bottom: 1px solid #957321;
+    border-left: 1px solid #aa8326;
+    border-radius: 3px;
 }

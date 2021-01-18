@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'AmazonFont';
-  src: url('./font/AmazonEmber_W_Rg.eot') 
-      /* url('myfont.ttf') format('truetype') */
-      url('./font/AmazonEmber_W_Rg.woff') format('woff')
+  font-family: "AmazonFont";
+  src: local("AmazonFont"), url('./font/AmazonEmber_Rg.ttf') format("truetype");
+  font-weight: normal;
 }
 
 * {
   margin: 0;
+  font-weight: 300;
 }
 
 body {
