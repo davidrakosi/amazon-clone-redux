@@ -45,7 +45,7 @@ const Cart = () => {
                         <p> This order contains a gift</p>
                     </div>
                     <Link to='/checkout'>
-                        <button>Proceed to checkout</button>
+                        <button className='amzButton'>Proceed to checkout</button>
                     </Link>
                 </div>
             </div>

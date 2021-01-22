@@ -1,0 +1,83 @@
+.checkout {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.checkout__container {
+    width: 760px;
+    padding: 32px;
+}
+
+h2 {
+    margin: 16px 0;
+    font-weight: 600;
+}
+
+/* remove arrows from number input */
+
+/* Chrome, Safari, Edge, Opera */
+
+.address__zip>input::-webkit-outer-spin-button, .checkout__formAddressZip>input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+
+.address__zip>input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.address__label, .personal__label {
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.address__formElement, .personal__formElement {
+    margin-bottom: 20px;
+}
+
+.address__row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address__states{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.address__states>select {
+    padding-right: 24px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    z-index: 100;
+    outline: 0;
+    color: #111;
+    text-align: center;
+    font-size: 13px;
+    line-height: 29px;
+    display: block;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+    background-color: transparent;
+    margin: 0;
+    border: 0;
+    width: 300px;
+    height: 31px;
+    padding: 0;
+    padding: 0 10px 0 11px;
+}
+
+input {
+    height: 31px;
+    font-size: 13px;
+    border-radius: 3px;
+    border: 1px solid #d0d0d0;
+    border-top: 1px solid #bbb;
+    line-height: normal;
+    width: 100%;
+}
