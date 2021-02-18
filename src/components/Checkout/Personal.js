@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { selectOrderName, selectOrderPhone, setOrderName, setOrderPhone } from '../../features/order/orderForm'
+import { selectUserName } from '../../features/user/userSlice'
 
 const Personal = () => {
     const orderName = useSelector(selectOrderName)
     const orderPhone = useSelector(selectOrderPhone)
+
+    const userName = useSelector(selectUserName)
+
+    useEffect(() => dispatch(setOrderName(userName)), [userName])
 
     const dispatch = useDispatch()
 
